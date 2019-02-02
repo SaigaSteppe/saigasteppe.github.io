@@ -30,7 +30,7 @@ window.addEventListener('load', ()=>{
 
 function getTime() {
 
-let aucklandTime = new Date().toLocaleString("en-GB", {timeZone:'Pacific/Auckland'});
+let aucklandTime = new Date().toLocaleString("en-US", {timeZone:'Pacific/Auckland'});
 	aucklandTime = new Date(aucklandTime);
 	
   document.getElementById('time').innerHTML =
