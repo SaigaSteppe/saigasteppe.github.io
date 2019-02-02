@@ -4,14 +4,14 @@ window.addEventListener('load', ()=>{
 	let longitude = 174.7457466;
 	let latitude = -36.8306687;
 	
-	let tempDegree = document.querySelector(".temp-degree");
-	let tempFar = document.querySelector(".temp-far");
+	let tempC = document.querySelector(".temp-c");
+	let tempF = document.querySelector(".temp-f");
 	let tempSummary = document.querySelector(".temp-summary");
 	
 
 	
-			//const proxy = "https://cors-anywhere.herokuapp.com/";
-			const api = "https://api.darksky.net/forecast/4a0e239170e865d9c965455c8347c36d/"+latitude+","+longitude;
+			const proxy = "https://cors-anywhere.herokuapp.com/";
+			const api = proxy+"https://api.darksky.net/forecast/4a0e239170e865d9c965455c8347c36d/"+latitude+","+longitude;
 	
 			fetch(api)
 				.then(response =>{
@@ -21,8 +21,8 @@ window.addEventListener('load', ()=>{
 				console.log(data);
 				
 				let celcius = ((data.currently.temperature - 32) * 5 )/ 9;
-				tempDegree.textContent = Math.round(celcius);
-				tempFar.textContent = Math.round(data.currently.temperature);
+				tempC.textContent = Math.round(celcius);
+				tempF.textContent = Math.round(data.currently.temperature);
 				
 				tempSummary.textContent = data.currently.summary;
 			});
