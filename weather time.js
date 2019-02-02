@@ -7,7 +7,6 @@ window.addEventListener('load', ()=>{
 	let tempC = document.querySelector(".temp-c");
 	let tempF = document.querySelector(".temp-f");
 	let tempSummary = document.querySelector(".temp-summary");
-	
 
 	
 			const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -20,8 +19,8 @@ window.addEventListener('load', ()=>{
 			.then(data =>{
 				console.log(data);
 				
-				let celcius = ((data.currently.temperature - 32) * 5 )/ 9;
-				tempC.textContent = Math.round(celcius);
+				let celsius = ((data.currently.temperature - 32) * 5 )/ 9;
+				tempC.textContent = Math.round(celsius);
 				tempF.textContent = Math.round(data.currently.temperature);
 				
 				tempSummary.textContent = data.currently.summary;
@@ -29,16 +28,11 @@ window.addEventListener('load', ()=>{
 		
 });
 
-function startTime() {
-  var today = new Date();
-  var h = today.getHours();
-  var m = today.getMinutes();
-  m = checkTime(m);
+function getTime() {
+
+let aucklandTime = new Date().toLocaleString("en-GB", {timeZone:'Pacific/Auckland'});
+	aucklandTime = new Date(aucklandTime);
+	
   document.getElementById('time').innerHTML =
-  h + ":" + m;
-  var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-  return i;
+  aucklandTime.toString().slice(4,16) + '(' + aucklandTime.toString().slice(16,21) + ')';
 }
